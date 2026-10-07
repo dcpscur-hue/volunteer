@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>臺南市大橋國民小學 - 校歌 (注音版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 自定義樣式 */
+        :root {
+            --primary-school-color: #0c4a6e;
+            --secondary-school-color: #f59e0b;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+            background-color: #f0fdfa;
+            background-image: 
+                radial-gradient(at 40% 20%, hsla(28,100%,74%,0.1) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, hsla(189,100%,56%,0.1) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, hsla(355,100%,93%,0.1) 0px, transparent 50%);
+        }
+
+        /* 注音標籤樣式 */
+        ruby {
+            ruby-align: center;
+            ruby-position: over;
+        }
+        rt {
+            font-size: 0.65em;
+            color: #64748b;
+            font-weight: 500;
+            margin-bottom: 2px;
+            letter-spacing: 0;
+        }
+
+        /* 隱藏注音的狀態 */
+        .hide-zhuyin rt {
+            display: none;
+        }
+
+        .lyrics-container p {
+            line-height: 2.8; /* 為了讓注音有足夠的空間，加大行距 */
+            margin-bottom: 0.5rem;
+            text-align: center;
+            font-size: 1.25rem;
+            color: #334155;
+            transition: color 0.3s ease;
+            letter-spacing: 0.1em;
+        }
+
+        .lyrics-container p:hover {
+            color: var(--primary-school-color);
+        }
+        .lyrics-container p:hover rt {
+            color: var(--primary-school-color);
+        }
+
+        .school-badge {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-school-color);
+            border: 4px solid var(--secondary-school-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .school-badge::after {
+            content: "大橋";
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 1rem;
+        }
+
+        /* 切換開關動畫 */
+        #toggleZhuyin:not(:checked) ~ .toggle-bg {
+            background-color: #cbd5e1;
+        }
+        #toggleZhuyin:not(:checked) ~ .dot {
+            transform: translateX(0);
+        }
+        #toggleZhuyin:checked ~ .dot {
+            transform: translateX(1rem);
+        }
+
+        /* 列印專屬樣式 (學習單模式) */
+        .print-only {
+            display: none;
+        }
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: flex !important;
+            }
+            .shadow-xl, .shadow-inner {
+                box-shadow: none !important;
+            }
+            .border, .border-gray-50, .border-gray-100 {
+                border-color: transparent !important;
+            }
+            .max-w-2xl {
+                max-w: 100% !important;
+                width: 100% !important;
+            }
+            .lyrics-container p {
+                color: #000 !important;
+                line-height: 3;
+            }
+            rt {
+                color: #444 !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center hide-zhuyin">
+
+    <div class="max-w-3xl w-full bg-white rounded-3xl shadow-xl overflow-hidden relative border border-gray-100">
+        
+        <!-- 頂部裝飾條 -->
+        <div class="h-3 w-full bg-gradient-to-r from-sky-800 via-sky-600 to-amber-500 no-print"></div>
+
+        <!-- 功能列：注音開關 & 列印按鈕 -->
+        <div class="absolute top-6 left-6 no-print">
+            <label class="flex items-center cursor-pointer text-sm text-slate-600 font-medium hover:text-slate-800 transition-colors">
+                <div class="relative">
+                    <input type="checkbox" id="toggleZhuyin" class="sr-only">
+                    <div class="block bg-sky-400 w-9 h-5 rounded-full toggle-bg transition-colors duration-300"></div>
+                    <div class="dot absolute left-1 top-0.5 bg-white w-4 h-4 rounded-full transition transform duration-300"></div>
+                </div>
+                <span class="ml-2">顯示注音</span>
+            </label>
+        </div>
+
+        <div class="absolute top-5 right-6 no-print">
+            <button onclick="window.print()" class="bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 font-medium py-1.5 px-4 rounded-full shadow-sm transition-colors flex items-center text-sm">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                列印學習單
+            </button>
+        </div>
+
+        <div class="p-8 sm:p-12 pt-16 sm:pt-16">
+            
+            <!-- 列印專用：班級姓名欄位 -->
+            <div class="print-only justify-end mb-6 text-lg font-medium text-black">
+                <div class="flex items-end">
+                    <span>年</span>
+                    <span class="inline-block w-12 border-b border-black mx-1"></span>
+                    <span>班</span>
+                    <span class="inline-block w-12 border-b border-black mx-1"></span>
+                    <span class="ml-4">姓名：</span>
+                    <span class="inline-block w-32 border-b border-black mx-1"></span>
+                </div>
+            </div>
+
+            <!-- 標題與校徽區 -->
+            <div class="text-center mb-8">
+                <div class="school-badge mb-6 transform hover:scale-105 transition-transform duration-300 no-print"></div>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-800 mb-2 tracking-tight">
+                    <ruby>臺<rt>ㄊㄞˊ</rt></ruby><ruby>南<rt>ㄋㄢˊ</rt></ruby><ruby>市<rt>ㄕˋ</rt></ruby><ruby>大<rt>ㄉㄚˋ</rt></ruby><ruby>橋<rt>ㄑㄧㄠˊ</rt></ruby><ruby>國<rt>ㄍㄨㄛˊ</rt></ruby><ruby>民<rt>ㄇㄧㄣˊ</rt></ruby><ruby>小<rt>ㄒㄧㄠˇ</rt></ruby><ruby>學<rt>ㄒㄩㄝˊ</rt></ruby>
+                </h1>
+                <h2 class="text-2xl font-bold text-sky-700 tracking-widest relative inline-block mt-2">
+                    <ruby>校<rt>ㄒㄧㄠˋ</rt></ruby> <ruby>歌<rt>ㄍㄜ</rt></ruby>
+                    <span class="absolute -bottom-2 left-1/4 w-1/2 h-1 bg-amber-400 rounded-full no-print"></span>
+                </h2>
+                <div class="mt-6 text-base text-slate-600 flex justify-center space-x-6">
+                    <span><ruby>作<rt>ㄗㄨㄛˋ</rt></ruby><ruby>詞<rt>ㄘˊ</rt></ruby>：<ruby>吳<rt>ㄨˊ</rt></ruby><ruby>有<rt>ㄧㄡˇ</rt></ruby><ruby>變<rt>ㄅㄧㄢˋ</rt></ruby> <ruby>校<rt>ㄒㄧㄠˋ</rt></ruby><ruby>長<rt>ㄓㄤˇ</rt></ruby></span>
+                    <span><ruby>作<rt>ㄗㄨㄛˋ</rt></ruby><ruby>曲<rt>ㄑㄩˇ</rt></ruby>：<ruby>吳<rt>ㄨˊ</rt></ruby><ruby>有<rt>ㄧㄡˇ</rt></ruby><ruby>變<rt>ㄅㄧㄢˋ</rt></ruby> <ruby>校<rt>ㄒㄧㄠˋ</rt></ruby><ruby>長<rt>ㄓㄤˇ</rt></ruby></span>
+                </div>
+            </div>
+
+            <!-- 影音與音檔預留區塊 -->
+            <div class="flex flex-col gap-6 mb-8 no-print">
+                
+                <!-- 影片播放器 (放大) -->
+                <div class="w-full bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                    <h3 class="text-sm font-bold text-slate-600 mb-3 flex items-center justify-center">
+                        <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        校歌影片
+                    </h3>
+                    <div class="video-container bg-slate-200 mx-auto" style="max-width: 100%;">
+                        <iframe 
+                            src="https://drive.google.com/file/d/1AGOw6I5Thg5TX8w07jKu8xV2IdCFMimT/preview" 
+                            title="Google Drive Video Player" 
+                            frameborder="0" 
+                            allow="autoplay; encrypted-media" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- 音檔播放器 (縮小並置中) -->
+                <div class="w-full sm:w-2/3 md:w-1/2 mx-auto bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                    <h3 class="text-sm font-bold text-slate-600 mb-3 flex items-center justify-center">
+                        <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
+                        校歌音檔
+                    </h3>
+                    <div class="w-full h-24 rounded-xl bg-slate-200 overflow-hidden relative flex items-center justify-center">
+                        <iframe 
+                            class="w-full h-full relative z-10"
+                            src="https://drive.google.com/file/d/1eNoCdnT6yj28h398y8ovAjkqK2HJjA3l/preview"
+                            frameborder="0"
+                            allow="autoplay">
+                        </iframe>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 歌詞區塊 (含注音) -->
+            <div class="lyrics-container bg-white p-6 sm:p-8 rounded-2xl shadow-inner border border-gray-50 relative">
+                <!-- 裝飾用引號 -->
+                <div class="absolute top-4 left-4 text-6xl text-gray-100 opacity-50 font-serif leading-none select-none no-print">"</div>
+                <div class="absolute bottom-4 right-4 text-6xl text-gray-100 opacity-50 font-serif leading-none select-none transform rotate-180 no-print">"</div>
+                
+                <div class="relative z-10 font-medium">
+                    <p>
+                        <ruby>大<rt>ㄉㄚˋ</rt></ruby><ruby>橋<rt>ㄑㄧㄠˊ</rt></ruby><ruby>校<rt>ㄒㄧㄠˋ</rt></ruby><ruby>園<rt>ㄩㄢˊ</rt></ruby><ruby>有<rt>ㄧㄡˇ</rt></ruby><ruby>跪<rt>ㄍㄨㄟˋ</rt></ruby><ruby>乳<rt>ㄖㄨˇ</rt></ruby><ruby>羔<rt>ㄍㄠ</rt></ruby><ruby>羊<rt>ㄧㄤˊ</rt></ruby><ruby>塑<rt>ㄙㄨˋ</rt></ruby><ruby>像<rt>ㄒㄧㄤˋ</rt></ruby>
+                    </p>
+                    <p>
+                        <ruby>實<rt>ㄕˊ</rt></ruby><ruby>踐<rt>ㄐㄧㄢˋ</rt></ruby><ruby>孝<rt>ㄒㄧㄠˋ</rt></ruby><ruby>悌<rt>ㄊㄧˋ</rt></ruby><ruby>美<rt>ㄇㄟˇ</rt></ruby><ruby>德<rt>ㄉㄜˊ</rt></ruby><ruby>同<rt>ㄊㄨㄥˊ</rt></ruby><ruby>學<rt>ㄒㄩㄝˊ</rt></ruby><ruby>相<rt>ㄒㄧㄤ</rt></ruby><ruby>親<rt>ㄑㄧㄣ</rt></ruby><ruby>相<rt>ㄒㄧㄤ</rt></ruby><ruby>愛<rt>ㄞˋ</rt></ruby>
+                    </p>
+                    <p>
+                        <ruby>尊<rt>ㄗㄨㄣ</rt></ruby><ruby>師<rt>ㄕ</rt></ruby><ruby>重<rt>ㄓㄨㄥˋ</rt></ruby><ruby>道<rt>ㄉㄠˋ</rt></ruby>　<ruby>發<rt>ㄈㄚ</rt></ruby><ruby>揚<rt>ㄧㄤˊ</rt></ruby><ruby>中<rt>ㄓㄨㄥ</rt></ruby><ruby>華<rt>ㄏㄨㄚˊ</rt></ruby><ruby>文<rt>ㄨㄣˊ</rt></ruby><ruby>化<rt>ㄏㄨㄚˋ</rt></ruby>
+                    </p>
+                    <p>
+                        <ruby>創<rt>ㄔㄨㄤˋ</rt></ruby><ruby>造<rt>ㄗㄠˋ</rt></ruby><ruby>書<rt>ㄕㄨ</rt></ruby><ruby>香<rt>ㄒㄧㄤ</rt></ruby><ruby>社<rt>ㄕㄜˋ</rt></ruby><ruby>會<rt>ㄏㄨㄟˋ</rt></ruby>
+                    </p>
+                    <p class="mt-2 text-sky-800 font-bold">
+                        <ruby>日<rt>ㄖˋ</rt></ruby><ruby>新<rt>ㄒㄧㄣ</rt></ruby><ruby>又<rt>ㄧㄡˋ</rt></ruby><ruby>新<rt>ㄒㄧㄣ</rt></ruby><ruby>師<rt>ㄕ</rt></ruby><ruby>生<rt>ㄕㄥ</rt></ruby><ruby>攜<rt>ㄒㄧ</rt></ruby><ruby>手<rt>ㄕㄡˇ</rt></ruby><ruby>合<rt>ㄏㄜˊ</rt></ruby><ruby>作<rt>ㄗㄨㄛˋ</rt></ruby>
+                    </p>
+                    <p class="text-sky-800 font-bold">
+                        <ruby>大<rt>ㄉㄚˋ</rt></ruby><ruby>橋<rt>ㄑㄧㄠˊ</rt></ruby><ruby>光<rt>ㄍㄨㄤ</rt></ruby><ruby>明<rt>ㄇㄧㄥˊ</rt></ruby><ruby>在<rt>ㄗㄞˋ</rt></ruby><ruby>望<rt>ㄨㄤˋ</rt></ruby>
+                    </p>
+                    
+                    <div class="h-6 no-print"></div> <!-- 段落間距 -->
+
+                    <p>
+                        <ruby>大<rt>ㄉㄚˋ</rt></ruby><ruby>橋<rt>ㄑㄧㄠˊ</rt></ruby><ruby>學<rt>ㄒㄩㄝˊ</rt></ruby><ruby>府<rt>ㄈㄨˇ</rt></ruby><ruby>行<rt>ㄒㄧㄥˊ</rt></ruby><ruby>五<rt>ㄨˇ</rt></ruby><ruby>育<rt>ㄩˋ</rt></ruby><ruby>並<rt>ㄅㄧㄥˋ</rt></ruby><ruby>重<rt>ㄓㄨㄥˋ</rt></ruby><ruby>教<rt>ㄐㄧㄠˋ</rt></ruby><ruby>育<rt>ㄩˋ</rt></ruby>
+                    </p>
+                    <p>
+                        <ruby>培<rt>ㄆㄟˊ</rt></ruby><ruby>育<rt>ㄩˋ</rt></ruby><ruby>國<rt>ㄍㄨㄛˊ</rt></ruby><ruby>家<rt>ㄐㄧㄚ</rt></ruby><ruby>棟<rt>ㄉㄨㄥˋ</rt></ruby><ruby>樑<rt>ㄌㄧㄤˊ</rt></ruby><ruby>教<rt>ㄐㄧㄠˋ</rt></ruby><ruby>師<rt>ㄕ</rt></ruby><ruby>教<rt>ㄐㄧㄠˋ</rt></ruby><ruby>學<rt>ㄒㄩㄝˊ</rt></ruby><ruby>相<rt>ㄒㄧㄤ</rt></ruby><ruby>長<rt>ㄓㄤˇ</rt></ruby>
+                    </p>
+                    <p>
+                        <ruby>美<rt>ㄇㄟˇ</rt></ruby><ruby>化<rt>ㄏㄨㄚˋ</rt></ruby><ruby>校<rt>ㄒㄧㄠˋ</rt></ruby><ruby>園<rt>ㄩㄢˊ</rt></ruby><ruby>提<rt>ㄊㄧˊ</rt></ruby><ruby>升<rt>ㄕㄥ</rt></ruby><ruby>精<rt>ㄐㄧㄥ</rt></ruby><ruby>神<rt>ㄕㄣˊ</rt></ruby><ruby>生<rt>ㄕㄥ</rt></ruby><ruby>活<rt>ㄏㄨㄛˊ</rt></ruby>
+                    </p>
+                    <p>
+                        <ruby>徜<rt>ㄔㄤˊ</rt></ruby><ruby>徉<rt>ㄧㄤˊ</rt></ruby><ruby>書<rt>ㄕㄨ</rt></ruby><ruby>中<rt>ㄓㄨㄥ</rt></ruby><ruby>天<rt>ㄊㄧㄢ</rt></ruby><ruby>地<rt>ㄉㄧˋ</rt></ruby>
+                    </p>
+                    <p class="mt-2 text-amber-600 font-bold">
+                        <ruby>快<rt>ㄎㄨㄞˋ</rt></ruby><ruby>樂<rt>ㄌㄜˋ</rt></ruby><ruby>逍<rt>ㄒㄧㄠ</rt></ruby><ruby>遙<rt>ㄧㄠˊ</rt></ruby><ruby>師<rt>ㄕ</rt></ruby><ruby>生<rt>ㄕㄥ</rt></ruby><ruby>齊<rt>ㄑㄧˊ</rt></ruby><ruby>心<rt>ㄒㄧㄣ</rt></ruby><ruby>協<rt>ㄒㄧㄝˊ</rt></ruby><ruby>力<rt>ㄌㄧˋ</rt></ruby>
+                    </p>
+                    <p class="text-amber-600 font-bold">
+                        <ruby>大<rt>ㄉㄚˋ</rt></ruby><ruby>橋<rt>ㄑㄧㄠˊ</rt></ruby><ruby>前<rt>ㄑㄧㄢˊ</rt></ruby><ruby>程<rt>ㄔㄥˊ</rt></ruby><ruby>無<rt>ㄨˊ</rt></ruby><ruby>量<rt>ㄌㄧㄤˋ</rt></ruby>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 底部資訊 -->
+            <div class="mt-12 text-center text-sm text-gray-400 border-t border-gray-100 pt-6 no-print">
+                <p>© 2026 臺南市大橋國民小學 版權所有</p>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const badge = document.querySelector('.school-badge');
+            const toggleZhuyin = document.getElementById('toggleZhuyin');
+
+            // 注音顯示/隱藏切換
+            toggleZhuyin.addEventListener('change', function() {
+                if (this.checked) {
+                    document.body.classList.remove('hide-zhuyin');
+                } else {
+                    document.body.classList.add('hide-zhuyin');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
