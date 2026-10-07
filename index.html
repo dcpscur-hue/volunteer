@@ -1,314 +1,875 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>臺南市大橋國民小學 - 校歌 (注音版)</title>
+    <title>台南市永康區大橋國民小學 志工輔導團官方網站</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', '"Outfit"', 'sans-serif'],
+                    },
+                    colors: {
+                        dqamber: {
+                            50: '#fffbebe',
+                            100: '#fef3c7',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* 自定義樣式 */
-        :root {
-            --primary-school-color: #0c4a6e;
-            --secondary-school-color: #f59e0b;
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        
-        body {
-            font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
-            background-color: #f0fdfa;
-            background-image: 
-                radial-gradient(at 40% 20%, hsla(28,100%,74%,0.1) 0px, transparent 50%),
-                radial-gradient(at 80% 0%, hsla(189,100%,56%,0.1) 0px, transparent 50%),
-                radial-gradient(at 0% 50%, hsla(355,100%,93%,0.1) 0px, transparent 50%);
+        ::-webkit-scrollbar-track {
+            background: #fff5f6;
         }
-
-        /* 注音標籤樣式 */
-        ruby {
-            ruby-align: center;
-            ruby-position: over;
+        ::-webkit-scrollbar-thumb {
+            background: #fbcfe8;
+            border-radius: 4px;
         }
-        rt {
-            font-size: 0.65em;
-            color: #64748b;
-            font-weight: 500;
-            margin-bottom: 2px;
-            letter-spacing: 0;
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f472b6;
         }
-
-        /* 隱藏注音的狀態 */
-        .hide-zhuyin rt {
-            display: none;
-        }
-
-        .lyrics-container p {
-            line-height: 2.8; /* 為了讓注音有足夠的空間，加大行距 */
-            margin-bottom: 0.5rem;
-            text-align: center;
-            font-size: 1.25rem;
-            color: #334155;
-            transition: color 0.3s ease;
-            letter-spacing: 0.1em;
-        }
-
-        .lyrics-container p:hover {
-            color: var(--primary-school-color);
-        }
-        .lyrics-container p:hover rt {
-            color: var(--primary-school-color);
-        }
-
-        .school-badge {
-            width: 80px;
-            height: 80px;
-            background-color: var(--primary-school-color);
-            border: 4px solid var(--secondary-school-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        
-        .school-badge::after {
-            content: "大橋";
-            color: white;
-            font-weight: bold;
-            font-size: 1rem;
-            letter-spacing: 2px;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            width: 100%;
-            max-width: 600px;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 1rem;
-        }
-
-        /* 切換開關動畫 */
-        #toggleZhuyin:not(:checked) ~ .toggle-bg {
-            background-color: #cbd5e1;
-        }
-        #toggleZhuyin:not(:checked) ~ .dot {
-            transform: translateX(0);
-        }
-        #toggleZhuyin:checked ~ .dot {
-            transform: translateX(1rem);
-        }
-
-        /* 列印專屬樣式 (學習單模式) */
-        .print-only {
-            display: none;
-        }
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-                margin: 0;
-            }
-            .no-print {
-                display: none !important;
-            }
-            .print-only {
-                display: flex !important;
-            }
-            .shadow-xl, .shadow-inner {
-                box-shadow: none !important;
-            }
-            .border, .border-gray-50, .border-gray-100 {
-                border-color: transparent !important;
-            }
-            .max-w-2xl {
-                max-w: 100% !important;
-                width: 100% !important;
-            }
-            .lyrics-container p {
-                color: #000 !important;
-                line-height: 3;
-            }
-            rt {
-                color: #444 !important;
-            }
+        .hero-pattern {
+            background-color: #fffafb;
+            background-image: radial-gradient(#fce7f3 1.5px, transparent 1.5px);
+            background-size: 20px 20px;
         }
     </style>
 </head>
-<body class="min-h-screen py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center hide-zhuyin">
+<body class="bg-pink-50/20 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
 
-    <div class="max-w-3xl w-full bg-white rounded-3xl shadow-xl overflow-hidden relative border border-gray-100">
-        
-        <!-- 頂部裝飾條 -->
-        <div class="h-3 w-full bg-gradient-to-r from-sky-800 via-sky-600 to-amber-500 no-print"></div>
-
-        <!-- 功能列：注音開關 & 列印按鈕 -->
-        <div class="absolute top-6 left-6 no-print">
-            <label class="flex items-center cursor-pointer text-sm text-slate-600 font-medium hover:text-slate-800 transition-colors">
-                <div class="relative">
-                    <input type="checkbox" id="toggleZhuyin" class="sr-only">
-                    <div class="block bg-sky-400 w-9 h-5 rounded-full toggle-bg transition-colors duration-300"></div>
-                    <div class="dot absolute left-1 top-0.5 bg-white w-4 h-4 rounded-full transition transform duration-300"></div>
-                </div>
-                <span class="ml-2">顯示注音</span>
-            </label>
-        </div>
-
-        <div class="absolute top-5 right-6 no-print">
-            <button onclick="window.print()" class="bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 font-medium py-1.5 px-4 rounded-full shadow-sm transition-colors flex items-center text-sm">
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
-                列印學習單
-            </button>
-        </div>
-
-        <div class="p-8 sm:p-12 pt-16 sm:pt-16">
-            
-            <!-- 列印專用：班級姓名欄位 -->
-            <div class="print-only justify-end mb-6 text-lg font-medium text-black">
-                <div class="flex items-end">
-                    <span>年</span>
-                    <span class="inline-block w-12 border-b border-black mx-1"></span>
-                    <span>班</span>
-                    <span class="inline-block w-12 border-b border-black mx-1"></span>
-                    <span class="ml-4">姓名：</span>
-                    <span class="inline-block w-32 border-b border-black mx-1"></span>
-                </div>
+    <!-- Top Contact & Announcement Bar (柔淡粉底色) -->
+    <div class="bg-pink-100/80 text-rose-900/90 text-xs py-2 px-4 border-b border-pink-200/50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-3">
+                <span class="inline-flex items-center gap-1 font-medium bg-white/70 px-2 py-0.5 rounded text-rose-800 shadow-sm">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-rose-400"></i> 校址：台南市永康區大橋三街173號
+                </span>
+                <span class="hidden md:inline-flex items-center gap-1 text-rose-700">
+                    <i data-lucide="building-2" class="w-3.5 h-3.5 text-rose-400"></i> 輔導單位：本校輔導處
+                </span>
             </div>
-
-            <!-- 標題與校徽區 -->
-            <div class="text-center mb-8">
-                <div class="school-badge mb-6 transform hover:scale-105 transition-transform duration-300 no-print"></div>
-                <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-800 mb-2 tracking-tight">
-                    <ruby>臺<rt>ㄊㄞˊ</rt></ruby><ruby>南<rt>ㄋㄢˊ</rt></ruby><ruby>市<rt>ㄕˋ</rt></ruby><ruby>大<rt>ㄉㄚˋ</rt></ruby><ruby>橋<rt>ㄑㄧㄠˊ</rt></ruby><ruby>國<rt>ㄍㄨㄛˊ</rt></ruby><ruby>民<rt>ㄇㄧㄣˊ</rt></ruby><ruby>小<rt>ㄒㄧㄠˇ</rt></ruby><ruby>學<rt>ㄒㄩㄝˊ</rt></ruby>
-                </h1>
-                <h2 class="text-2xl font-bold text-sky-700 tracking-widest relative inline-block mt-2">
-                    <ruby>校<rt>ㄒㄧㄠˋ</rt></ruby> <ruby>歌<rt>ㄍㄜ</rt></ruby>
-                    <span class="absolute -bottom-2 left-1/4 w-1/2 h-1 bg-amber-400 rounded-full no-print"></span>
-                </h2>
-                <div class="mt-6 text-base text-slate-600 flex justify-center space-x-6">
-                    <span><ruby>作<rt>ㄗㄨㄛˋ</rt></ruby><ruby>詞<rt>ㄘˊ</rt></ruby>：<ruby>吳<rt>ㄨˊ</rt></ruby><ruby>有<rt>ㄧㄡˇ</rt></ruby><ruby>變<rt>ㄅㄧㄢˋ</rt></ruby> <ruby>校<rt>ㄒㄧㄠˋ</rt></ruby><ruby>長<rt>ㄓㄤˇ</rt></ruby></span>
-                    <span><ruby>作<rt>ㄗㄨㄛˋ</rt></ruby><ruby>曲<rt>ㄑㄩˇ</rt></ruby>：<ruby>吳<rt>ㄨˊ</rt></ruby><ruby>有<rt>ㄧㄡˇ</rt></ruby><ruby>變<rt>ㄅㄧㄢˋ</rt></ruby> <ruby>校<rt>ㄒㄧㄠˋ</rt></ruby><ruby>長<rt>ㄓㄤˇ</rt></ruby></span>
-                </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://www.facebook.com/p/%E5%A4%A7%E6%A9%8B%E5%9C%8B%E5%B0%8F%E5%BF%97%E5%B7%A5%E5%9C%98-100057830281866/?locale=zh_TW" target="_blank" rel="noopener noreferrer" class="hover:text-rose-600 flex items-center gap-1 transition text-rose-700">
+                    <i data-lucide="facebook" class="w-3.5 h-3.5 text-rose-400"></i>
+                    <span>志工團官方 FB 粉絲頁</span>
+                </a>
+                <span class="text-pink-300">|</span>
+                <span class="font-semibold text-rose-600 bg-pink-50 px-2 py-0.5 rounded-full border border-pink-200/60">115學年度招募中</span>
             </div>
-
-            <!-- 影音與音檔預留區塊 -->
-            <div class="flex flex-col gap-6 mb-8 no-print">
-                
-                <!-- 影片播放器 (放大) -->
-                <div class="w-full bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                    <h3 class="text-sm font-bold text-slate-600 mb-3 flex items-center justify-center">
-                        <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                        校歌影片
-                    </h3>
-                    <div class="video-container bg-slate-200 mx-auto" style="max-width: 100%;">
-                        <iframe 
-                            src="https://drive.google.com/file/d/1AGOw6I5Thg5TX8w07jKu8xV2IdCFMimT/preview" 
-                            title="Google Drive Video Player" 
-                            frameborder="0" 
-                            allow="autoplay; encrypted-media" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-
-                <!-- 音檔播放器 (縮小並置中) -->
-                <div class="w-full sm:w-2/3 md:w-1/2 mx-auto bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                    <h3 class="text-sm font-bold text-slate-600 mb-3 flex items-center justify-center">
-                        <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
-                        校歌音檔
-                    </h3>
-                    <div class="w-full h-24 rounded-xl bg-slate-200 overflow-hidden relative flex items-center justify-center">
-                        <iframe 
-                            class="w-full h-full relative z-10"
-                            src="https://drive.google.com/file/d/1eNoCdnT6yj28h398y8ovAjkqK2HJjA3l/preview"
-                            frameborder="0"
-                            allow="autoplay">
-                        </iframe>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- 歌詞區塊 (含注音) -->
-            <div class="lyrics-container bg-white p-6 sm:p-8 rounded-2xl shadow-inner border border-gray-50 relative">
-                <!-- 裝飾用引號 -->
-                <div class="absolute top-4 left-4 text-6xl text-gray-100 opacity-50 font-serif leading-none select-none no-print">"</div>
-                <div class="absolute bottom-4 right-4 text-6xl text-gray-100 opacity-50 font-serif leading-none select-none transform rotate-180 no-print">"</div>
-                
-                <div class="relative z-10 font-medium">
-                    <p>
-                        <ruby>大<rt>ㄉㄚˋ</rt></ruby><ruby>橋<rt>ㄑㄧㄠˊ</rt></ruby><ruby>校<rt>ㄒㄧㄠˋ</rt></ruby><ruby>園<rt>ㄩㄢˊ</rt></ruby><ruby>有<rt>ㄧㄡˇ</rt></ruby><ruby>跪<rt>ㄍㄨㄟˋ</rt></ruby><ruby>乳<rt>ㄖㄨˇ</rt></ruby><ruby>羔<rt>ㄍㄠ</rt></ruby><ruby>羊<rt>ㄧㄤˊ</rt></ruby><ruby>塑<rt>ㄙㄨˋ</rt></ruby><ruby>像<rt>ㄒㄧㄤˋ</rt></ruby>
-                    </p>
-                    <p>
-                        <ruby>實<rt>ㄕˊ</rt></ruby><ruby>踐<rt>ㄐㄧㄢˋ</rt></ruby><ruby>孝<rt>ㄒㄧㄠˋ</rt></ruby><ruby>悌<rt>ㄊㄧˋ</rt></ruby><ruby>美<rt>ㄇㄟˇ</rt></ruby><ruby>德<rt>ㄉㄜˊ</rt></ruby><ruby>同<rt>ㄊㄨㄥˊ</rt></ruby><ruby>學<rt>ㄒㄩㄝˊ</rt></ruby><ruby>相<rt>ㄒㄧㄤ</rt></ruby><ruby>親<rt>ㄑㄧㄣ</rt></ruby><ruby>相<rt>ㄒㄧㄤ</rt></ruby><ruby>愛<rt>ㄞˋ</rt></ruby>
-                    </p>
-                    <p>
-                        <ruby>尊<rt>ㄗㄨㄣ</rt></ruby><ruby>師<rt>ㄕ</rt></ruby><ruby>重<rt>ㄓㄨㄥˋ</rt></ruby><ruby>道<rt>ㄉㄠˋ</rt></ruby>　<ruby>發<rt>ㄈㄚ</rt></ruby><ruby>揚<rt>ㄧㄤˊ</rt></ruby><ruby>中<rt>ㄓㄨㄥ</rt></ruby><ruby>華<rt>ㄏㄨㄚˊ</rt></ruby><ruby>文<rt>ㄨㄣˊ</rt></ruby><ruby>化<rt>ㄏㄨㄚˋ</rt></ruby>
-                    </p>
-                    <p>
-                        <ruby>創<rt>ㄔㄨㄤˋ</rt></ruby><ruby>造<rt>ㄗㄠˋ</rt></ruby><ruby>書<rt>ㄕㄨ</rt></ruby><ruby>香<rt>ㄒㄧㄤ</rt></ruby><ruby>社<rt>ㄕㄜˋ</rt></ruby><ruby>會<rt>ㄏㄨㄟˋ</rt></ruby>
-                    </p>
-                    <p class="mt-2 text-sky-800 font-bold">
-                        <ruby>日<rt>ㄖˋ</rt></ruby><ruby>新<rt>ㄒㄧㄣ</rt></ruby><ruby>又<rt>ㄧㄡˋ</rt></ruby><ruby>新<rt>ㄒㄧㄣ</rt></ruby><ruby>師<rt>ㄕ</rt></ruby><ruby>生<rt>ㄕㄥ</rt></ruby><ruby>攜<rt>ㄒㄧ</rt></ruby><ruby>手<rt>ㄕㄡˇ</rt></ruby><ruby>合<rt>ㄏㄜˊ</rt></ruby><ruby>作<rt>ㄗㄨㄛˋ</rt></ruby>
-                    </p>
-                    <p class="text-sky-800 font-bold">
-                        <ruby>大<rt>ㄉㄚˋ</rt></ruby><ruby>橋<rt>ㄑㄧㄠˊ</rt></ruby><ruby>光<rt>ㄍㄨㄤ</rt></ruby><ruby>明<rt>ㄇㄧㄥˊ</rt></ruby><ruby>在<rt>ㄗㄞˋ</rt></ruby><ruby>望<rt>ㄨㄤˋ</rt></ruby>
-                    </p>
-                    
-                    <div class="h-6 no-print"></div> <!-- 段落間距 -->
-
-                    <p>
-                        <ruby>大<rt>ㄉㄚˋ</rt></ruby><ruby>橋<rt>ㄑㄧㄠˊ</rt></ruby><ruby>學<rt>ㄒㄩㄝˊ</rt></ruby><ruby>府<rt>ㄈㄨˇ</rt></ruby><ruby>行<rt>ㄒㄧㄥˊ</rt></ruby><ruby>五<rt>ㄨˇ</rt></ruby><ruby>育<rt>ㄩˋ</rt></ruby><ruby>並<rt>ㄅㄧㄥˋ</rt></ruby><ruby>重<rt>ㄓㄨㄥˋ</rt></ruby><ruby>教<rt>ㄐㄧㄠˋ</rt></ruby><ruby>育<rt>ㄩˋ</rt></ruby>
-                    </p>
-                    <p>
-                        <ruby>培<rt>ㄆㄟˊ</rt></ruby><ruby>育<rt>ㄩˋ</rt></ruby><ruby>國<rt>ㄍㄨㄛˊ</rt></ruby><ruby>家<rt>ㄐㄧㄚ</rt></ruby><ruby>棟<rt>ㄉㄨㄥˋ</rt></ruby><ruby>樑<rt>ㄌㄧㄤˊ</rt></ruby><ruby>教<rt>ㄐㄧㄠˋ</rt></ruby><ruby>師<rt>ㄕ</rt></ruby><ruby>教<rt>ㄐㄧㄠˋ</rt></ruby><ruby>學<rt>ㄒㄩㄝˊ</rt></ruby><ruby>相<rt>ㄒㄧㄤ</rt></ruby><ruby>長<rt>ㄓㄤˇ</rt></ruby>
-                    </p>
-                    <p>
-                        <ruby>美<rt>ㄇㄟˇ</rt></ruby><ruby>化<rt>ㄏㄨㄚˋ</rt></ruby><ruby>校<rt>ㄒㄧㄠˋ</rt></ruby><ruby>園<rt>ㄩㄢˊ</rt></ruby><ruby>提<rt>ㄊㄧˊ</rt></ruby><ruby>升<rt>ㄕㄥ</rt></ruby><ruby>精<rt>ㄐㄧㄥ</rt></ruby><ruby>神<rt>ㄕㄣˊ</rt></ruby><ruby>生<rt>ㄕㄥ</rt></ruby><ruby>活<rt>ㄏㄨㄛˊ</rt></ruby>
-                    </p>
-                    <p>
-                        <ruby>徜<rt>ㄔㄤˊ</rt></ruby><ruby>徉<rt>ㄧㄤˊ</rt></ruby><ruby>書<rt>ㄕㄨ</rt></ruby><ruby>中<rt>ㄓㄨㄥ</rt></ruby><ruby>天<rt>ㄊㄧㄢ</rt></ruby><ruby>地<rt>ㄉㄧˋ</rt></ruby>
-                    </p>
-                    <p class="mt-2 text-amber-600 font-bold">
-                        <ruby>快<rt>ㄎㄨㄞˋ</rt></ruby><ruby>樂<rt>ㄌㄜˋ</rt></ruby><ruby>逍<rt>ㄒㄧㄠ</rt></ruby><ruby>遙<rt>ㄧㄠˊ</rt></ruby><ruby>師<rt>ㄕ</rt></ruby><ruby>生<rt>ㄕㄥ</rt></ruby><ruby>齊<rt>ㄑㄧˊ</rt></ruby><ruby>心<rt>ㄒㄧㄣ</rt></ruby><ruby>協<rt>ㄒㄧㄝˊ</rt></ruby><ruby>力<rt>ㄌㄧˋ</rt></ruby>
-                    </p>
-                    <p class="text-amber-600 font-bold">
-                        <ruby>大<rt>ㄉㄚˋ</rt></ruby><ruby>橋<rt>ㄑㄧㄠˊ</rt></ruby><ruby>前<rt>ㄑㄧㄢˊ</rt></ruby><ruby>程<rt>ㄔㄥˊ</rt></ruby><ruby>無<rt>ㄨˊ</rt></ruby><ruby>量<rt>ㄌㄧㄤˋ</rt></ruby>
-                    </p>
-                </div>
-            </div>
-            
-            <!-- 底部資訊 -->
-            <div class="mt-12 text-center text-sm text-gray-400 border-t border-gray-100 pt-6 no-print">
-                <p>© 2026 臺南市大橋國民小學 版權所有</p>
-            </div>
-            
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const badge = document.querySelector('.school-badge');
-            const toggleZhuyin = document.getElementById('toggleZhuyin');
+    <!-- Main Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-pink-100/70 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-300 to-pink-200 flex items-center justify-center text-white shadow-md shadow-pink-200/50 group-hover:scale-105 transition duration-300">
+                    <i data-lucide="heart-handshake" class="w-7 h-7 text-rose-600"></i>
+                </div>
+                <div>
+                    <div class="text-xs font-bold text-rose-400 tracking-wider">台南市永康區</div>
+                    <h1 class="text-lg sm:text-xl font-extrabold text-slate-800 tracking-tight flex items-center gap-1.5">
+                        大橋國民小學志工輔導團
+                    </h1>
+                </div>
+            </a>
 
-            // 注音顯示/隱藏切換
-            toggleZhuyin.addEventListener('change', function() {
-                if (this.checked) {
-                    document.body.classList.remove('hide-zhuyin');
-                } else {
-                    document.body.classList.add('hide-zhuyin');
-                }
-            });
-        });
+            <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold text-slate-700">
+                <a href="#about" class="hover:text-rose-400 transition">宗旨與信條</a>
+                <a href="#organization" class="hover:text-rose-400 transition">組織與幹部</a>
+                <a href="#groups" class="hover:text-rose-400 transition">服務組別說明</a>
+                <a href="#charter" class="hover:text-rose-400 transition">章程與獎勵</a>
+                <a href="#gallery" class="hover:text-rose-400 transition">活動花絮</a>
+                <a href="#signup" class="px-5 py-2.5 rounded-xl bg-pink-400 hover:bg-pink-500 text-white shadow-md shadow-pink-200/60 transition transform active:scale-95 flex items-center gap-2 font-bold">
+                    <i data-lucide="phone-call" class="w-4 h-4"></i>
+                    <span>報名請洽輔導室</span>
+                </a>
+            </nav>
+
+            <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-pink-50 focus:outline-none">
+                <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-pink-100 bg-white px-4 pt-3 pb-6 space-y-3">
+            <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-pink-50">宗旨與信條</a>
+            <a href="#organization" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-pink-50">組織與幹部</a>
+            <a href="#groups" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-pink-50">服務組別說明</a>
+            <a href="#charter" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-pink-50">章程與獎勵</a>
+            <a href="#gallery" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-base font-medium text-slate-700 hover:bg-pink-50">活動花絮</a>
+            <a href="#signup" onclick="toggleMobileMenu()" class="block w-full text-center px-4 py-3 rounded-xl bg-pink-400 text-white font-bold shadow-md">
+                報名請洽輔導室
+            </a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative hero-pattern pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-pink-100/70 text-rose-700 text-xs font-bold tracking-wide border border-pink-200/50">
+                            <i data-lucide="sparkles" class="w-4 h-4 text-pink-400"></i>
+                            <span>大橋國小 校長 徐俊雄 誠摯邀請</span>
+                        </div>
+                        <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight">
+                            「匯集小愛為大愛」<br>
+                            <span class="bg-gradient-to-r from-rose-400 via-pink-400 to-amber-400 bg-clip-text text-transparent">
+                                守護陪伴大橋的孩子平安成長
+                            </span>
+                        </h1>
+                        <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                            『施比受更有福』，大橋志工團多年來為學校與學童無私付出。誠摯邀請熱心愛心的您一同加入志工行列，成為學校堅實的教育後盾！
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#signup" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-pink-400 hover:bg-pink-500 text-white font-bold shadow-lg shadow-pink-200/60 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-base">
+                                <i data-lucide="phone-call" class="w-5 h-5"></i>
+                                <span>聯絡輔導室報名</span>
+                            </a>
+                            <a href="#groups" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white border border-pink-200/80 hover:bg-pink-50/50 text-slate-700 font-bold shadow-xs transition flex items-center justify-center gap-2 text-base">
+                                <i data-lucide="clock" class="w-5 h-5 text-pink-400"></i>
+                                <span>探索服務組別與時段</span>
+                            </a>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-4 pt-8 border-t border-pink-100 max-w-lg mx-auto lg:mx-0">
+                            <div class="text-center lg:text-left">
+                                <div class="text-2xl sm:text-3xl font-extrabold text-rose-400">30+年</div>
+                                <div class="text-xs text-slate-500 font-medium">創團熱忱服務歷史</div>
+                            </div>
+                            <div class="text-center lg:text-left">
+                                <div class="text-2xl sm:text-3xl font-extrabold text-rose-400">5大</div>
+                                <div class="text-xs text-slate-500 font-medium">多元執勤與支援組別</div>
+                            </div>
+                            <div class="text-center lg:text-left">
+                                <div class="text-2xl sm:text-3xl font-extrabold text-amber-500">100%</div>
+                                <div class="text-xs text-slate-500 font-medium">無私奉獻教育大愛</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-full max-w-md bg-white rounded-3xl p-6 shadow-xl border border-pink-100/70 space-y-6">
+                            <div class="absolute -top-4 -right-4 bg-amber-400 text-white p-3 rounded-2xl shadow-md rotate-12">
+                                <i data-lucide="award" class="w-8 h-8"></i>
+                            </div>
+
+                            <div class="flex items-center space-x-3 border-b border-pink-50 pb-4">
+                                <div class="w-10 h-10 rounded-full bg-pink-50 text-rose-400 flex items-center justify-center font-bold">
+                                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900">志工團專屬保障與福利</h3>
+                                    <p class="text-xs text-slate-500">大橋國小輔導處與志工團關心您</p>
+                                </div>
+                            </div>
+
+                            <ul class="space-y-3.5 text-xs sm:text-sm text-slate-700">
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-rose-400 shrink-0 mt-0.5"></i>
+                                    <span>享有政府投保之意外責任險與各項志工福利。</span>
+                                </li>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-rose-400 shrink-0 mt-0.5"></i>
+                                    <span>服務時數確實登錄，可列入志工認證服務時數。</span>
+                                </li>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-rose-400 shrink-0 mt-0.5"></i>
+                                    <span>服務滿 10、15、20 年及 65 歲高齡志工，頒發榮譽獎牌。</span>
+                                </li>
+                                <li class="flex items-start gap-2.5">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-rose-400 shrink-0 mt-0.5"></i>
+                                    <span>每學年服務達 130 小時者，頒發「志工服務績優獎」。</span>
+                                </li>
+                            </ul>
+
+                            <div class="p-4 bg-pink-50/60 rounded-2xl border border-pink-100/70 text-rose-900/90 text-xs leading-relaxed">
+                                <strong class="block font-bold text-rose-600 mb-1">【入團資格說明】</strong>
+                                凡本校學區內民眾或學生家長，具備愛心熱情，能配合學校活動時間者，均歡迎申請入團（每年一聘，期滿得續聘）。
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Creed and Purpose -->
+        <section id="about" class="py-16 bg-white border-y border-pink-100/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-extrabold uppercase tracking-widest text-rose-400 mb-2">Creed & Purpose</h2>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">本團信條與成立宗旨</h3>
+                    <div class="w-16 h-1 bg-pink-300 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-pink-50/20 rounded-3xl p-8 border border-pink-100/80 shadow-xs hover:shadow-md transition">
+                        <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mb-6">
+                            <i data-lucide="heart" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-3">【團規信條】</h4>
+                        <p class="text-slate-600 text-base leading-relaxed">
+                            本團信條以闡揚<span class="font-bold text-rose-500">「幼吾幼以及人之幼」</span>之精神，期能拋磚引玉，以推動社會善良風氣之普及，讓大愛傳遞至校園每個角落。
+                        </p>
+                    </div>
+
+                    <div class="bg-pink-50/20 rounded-3xl p-8 border border-pink-100/80 shadow-xs hover:shadow-md transition">
+                        <div class="w-14 h-14 rounded-2xl bg-pink-100/60 text-rose-500 flex items-center justify-center mb-6">
+                            <i data-lucide="target" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 mb-3">【團務宗旨】</h4>
+                        <p class="text-slate-600 text-base leading-relaxed">
+                            激勵社區人士發揮自助助人、關心自己也關懷他人的精神，引導其愛護學校並貢獻力量，全方位協助大橋國小師生之<span class="font-bold text-rose-500">行政、教學、輔導及各項相關活動</span>。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Organization & Leadership -->
+        <section id="organization" class="py-16 bg-pink-50/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-extrabold uppercase tracking-widest text-rose-400 mb-2">Organization Structure</h2>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">組織架構與幹部名單</h3>
+                    <p class="text-slate-500 text-sm mt-2">115 學年度志工團服務幹部團隊與歷屆團長傳承榮譽榜</p>
+                    <div class="w-16 h-1 bg-pink-300 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="mb-16">
+                    <h4 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
+                        <i data-lucide="users" class="w-5 h-5 text-rose-400"></i>
+                        <span>【115 學年度現任志工幹部】</span>
+                    </h4>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                        <div class="bg-gradient-to-br from-rose-400 to-pink-300 text-white rounded-2xl p-5 shadow-md">
+                            <div class="text-xs text-rose-50 font-semibold uppercase tracking-wider">團長</div>
+                            <div class="text-2xl font-extrabold mt-1">陳○靜</div>
+                            <div class="text-xs text-rose-100 mt-2">對外代表本團，對內綜理團務</div>
+                        </div>
+                        <div class="bg-white rounded-2xl p-5 border border-pink-100 shadow-xs">
+                            <div class="text-xs text-slate-400 font-semibold">副團長</div>
+                            <div class="text-xl font-bold text-slate-800 mt-1">王○平</div>
+                            <div class="text-xs text-slate-500 mt-2">襄贊團長處理本團業務</div>
+                        </div>
+                        <div class="bg-white rounded-2xl p-5 border border-pink-100 shadow-xs">
+                            <div class="text-xs text-slate-400 font-semibold">副團長</div>
+                            <div class="text-xl font-bold text-slate-800 mt-1">龔○華</div>
+                            <div class="text-xs text-slate-500 mt-2">襄贊團長處理本團業務</div>
+                        </div>
+                        <div class="bg-white rounded-2xl p-5 border border-pink-100 shadow-xs">
+                            <div class="text-xs text-slate-400 font-semibold">副團長</div>
+                            <div class="text-xl font-bold text-slate-800 mt-1">陳○豪</div>
+                            <div class="text-xs text-slate-500 mt-2">襄贊團長處理本團業務</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-white p-5 rounded-2xl border border-pink-100 shadow-xs">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md">內部行政</span>
+                                <i data-lucide="calculator" class="w-4 h-4 text-slate-400"></i>
+                            </div>
+                            <h5 class="font-bold text-slate-800">總務文書股股長</h5>
+                            <p class="text-lg font-bold text-rose-500 mt-1">莊○欣</p>
+                            <p class="text-xs text-slate-500 mt-2">財務收支、採購、會議記錄、文宣存檔</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-pink-100 shadow-xs">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md">內部行政</span>
+                                <i data-lucide="palette" class="w-4 h-4 text-slate-400"></i>
+                            </div>
+                            <h5 class="font-bold text-slate-800">美工股股長</h5>
+                            <p class="text-lg font-bold text-rose-500 mt-1">董○君</p>
+                            <p class="text-xs text-slate-500 mt-2">活動海報製作、大型會場視覺佈置</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-pink-100 shadow-xs">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold text-rose-500 bg-pink-50 px-2.5 py-1 rounded-md">執勤服務</span>
+                                <i data-lucide="shield" class="w-4 h-4 text-slate-400"></i>
+                            </div>
+                            <h5 class="font-bold text-slate-800">交通組組長</h5>
+                            <p class="text-lg font-bold text-rose-500 mt-1">朱○惠</p>
+                            <p class="text-xs text-slate-500 mt-2">導護時段排班、路口交通安全督導</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-pink-100 shadow-xs">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold text-rose-500 bg-pink-50 px-2.5 py-1 rounded-md">執勤服務</span>
+                                <i data-lucide="book-open" class="w-4 h-4 text-slate-400"></i>
+                            </div>
+                            <h5 class="font-bold text-slate-800">圖書教具組組長 / 副組長</h5>
+                            <p class="text-lg font-bold text-rose-500 mt-1">陳○年 <span class="text-xs text-slate-500 font-normal">(組長)</span> / 鄧○卉 <span class="text-xs text-slate-500 font-normal">(副組長)</span></p>
+                            <p class="text-xs text-slate-500 mt-2">協助圖書館借還書、教具管理與整書</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-pink-100 shadow-xs">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold text-rose-500 bg-pink-50 px-2.5 py-1 rounded-md">執勤服務</span>
+                                <i data-lucide="leaf" class="w-4 h-4 text-slate-400"></i>
+                            </div>
+                            <h5 class="font-bold text-slate-800">環保組組長</h5>
+                            <p class="text-lg font-bold text-rose-500 mt-1">柳○琳</p>
+                            <p class="text-xs text-slate-500 mt-2">週三、五資源回收指導</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-pink-100 shadow-xs">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold text-rose-500 bg-pink-50 px-2.5 py-1 rounded-md">執勤服務</span>
+                                <i data-lucide="sparkles" class="w-4 h-4 text-slate-400"></i>
+                            </div>
+                            <h5 class="font-bold text-slate-800">故事組組長</h5>
+                            <p class="text-lg font-bold text-rose-500 mt-1">楊○惠</p>
+                            <p class="text-xs text-slate-500 mt-2">週一晨光論語經典故事</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Past Presidents List (已移除備註/奉獻事蹟欄位) -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-pink-100/80 shadow-xs max-w-3xl mx-auto">
+                    <h4 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2">
+                        <i data-lucide="award" class="w-5 h-5 text-amber-500"></i>
+                        <span>【歷屆志工團團長名冊】</span>
+                    </h4>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs sm:text-sm text-slate-600">
+                            <thead class="bg-pink-50/50 text-slate-800 uppercase font-bold border-b border-pink-100">
+                                <tr>
+                                    <th class="py-3 px-6 w-1/2">任職學年</th>
+                                    <th class="py-3 px-6 w-1/2">歷任團長</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-pink-50">
+                                <tr class="hover:bg-pink-50/30 transition">
+                                    <td class="py-3 px-6 font-semibold text-rose-500">80 學年</td>
+                                    <td class="py-3 px-6 font-bold text-slate-800">邱○美 團長</td>
+                                </tr>
+                                <tr class="hover:bg-pink-50/30 transition">
+                                    <td class="py-3 px-6 font-semibold text-rose-500">81 學年</td>
+                                    <td class="py-3 px-6 font-bold text-slate-800">張○蘭 團長</td>
+                                </tr>
+                                <tr class="hover:bg-pink-50/30 transition">
+                                    <td class="py-3 px-6 font-semibold text-rose-500">82 - 83 學年</td>
+                                    <td class="py-3 px-6 font-bold text-slate-800">黃○治 團長</td>
+                                </tr>
+                                <tr class="hover:bg-pink-50/30 transition">
+                                    <td class="py-3 px-6 font-semibold text-rose-500">84 學年</td>
+                                    <td class="py-3 px-6 font-bold text-slate-800">李○惠 團長</td>
+                                </tr>
+                                <tr class="hover:bg-pink-50/30 transition">
+                                    <td class="py-3 px-6 font-semibold text-rose-500">85 學年</td>
+                                    <td class="py-3 px-6 font-bold text-slate-800">黃○美 團長</td>
+                                </tr>
+                                <tr class="hover:bg-pink-50/30 transition">
+                                    <td class="py-3 px-6 font-semibold text-rose-500">86 - 87 學年</td>
+                                    <td class="py-3 px-6 font-bold text-slate-800">謝○德 團長</td>
+                                </tr>
+                                <tr class="hover:bg-pink-50/30 transition">
+                                    <td class="py-3 px-6 font-semibold text-rose-500">88 - 89 學年</td>
+                                    <td class="py-3 px-6 font-bold text-slate-800">傅○菊 團長</td>
+                                </tr>
+                                <tr class="hover:bg-pink-50/30 transition">
+                                    <td class="py-3 px-6 font-semibold text-rose-500">90 - 91 學年</td>
+                                    <td class="py-3 px-6 font-bold text-slate-800">吳○儀 團長</td>
+                                </tr>
+                                <tr class="hover:bg-pink-50/30 transition">
+                                    <td class="py-3 px-6 font-semibold text-rose-500">92 - 93 學年</td>
+                                    <td class="py-3 px-6 font-bold text-slate-800">陳○靜 團長</td>
+                                </tr>
+                                <tr class="hover:bg-pink-50/30 transition">
+                                    <td class="py-3 px-6 font-semibold text-rose-500">94 學年</td>
+                                    <td class="py-3 px-6 font-bold text-slate-800">鄭○蓉 團長</td>
+                                </tr>
+                                <tr class="hover:bg-pink-50/30 transition">
+                                    <td class="py-3 px-6 font-semibold text-rose-500">95 - 99 學年</td>
+                                    <td class="py-3 px-6 font-bold text-slate-800">陳○靜 團長</td>
+                                </tr>
+                                <tr class="hover:bg-pink-50/30 transition">
+                                    <td class="py-3 px-6 font-semibold text-rose-500">100 - 103 學年</td>
+                                    <td class="py-3 px-6 font-bold text-slate-800">沈○應 團長</td>
+                                </tr>
+                                <tr class="bg-pink-50/70 font-bold">
+                                    <td class="py-3.5 px-6 text-rose-700">104 學年 - 迄今</td>
+                                    <td class="py-3.5 px-6 text-rose-700">陳○靜 團長</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section: Service Groups & Timetable (完全對齊版型) -->
+        <section id="groups" class="py-16 bg-white border-t border-pink-100/70">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">執勤服務組別與詳細時段</h2>
+                    <p class="text-slate-500 text-sm mt-2">每人每週至少服勤二小時或二次，請選擇最符合您時間的服務組別</p>
+                    <div class="w-16 h-1 bg-pink-300 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+                    <!-- 1. 交通導護組 -->
+                    <div class="bg-white rounded-3xl p-6 border border-pink-200/60 shadow-xs flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="w-10 h-10 rounded-2xl bg-amber-50 text-amber-500 flex items-center justify-center font-bold border border-amber-100/80">
+                                    <i data-lucide="shield-alert" class="w-5 h-5"></i>
+                                </span>
+                                <span class="text-xs font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-100">需擇2~3時段</span>
+                            </div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">交通導護組</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-6">
+                                協助學生上學、放學時路口交通指揮，保護學童安全過馬路。<br>（執勤請穿著配發黃色反光背心與裝備）
+                            </p>
+                        </div>
+                        <div class="space-y-2 bg-pink-50/30 p-4 rounded-2xl border border-pink-100/70 text-xs text-slate-700">
+                            <div class="font-bold text-slate-800 border-b border-pink-100 pb-1.5">執勤時段：</div>
+                            <div class="space-y-1 text-slate-600 pt-1">
+                                <div>• <strong>晨間：</strong>週一至週五 07:00 - 07:45</div>
+                                <div>• <strong>中午：</strong>週一、三、四、五 12:35 - 13:00</div>
+                                <div>• <strong>週五下午：</strong>15:05 - 15:30</div>
+                                <div>• <strong>全天下午：</strong>週一、二、四 15:55 - 16:25</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. 圖書教具組 -->
+                    <div class="bg-white rounded-3xl p-6 border border-pink-200/60 shadow-xs flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="w-10 h-10 rounded-2xl bg-blue-50 text-blue-500 flex items-center justify-center font-bold border border-blue-100/80">
+                                    <i data-lucide="book-marked" class="w-5 h-5"></i>
+                                </span>
+                                <span class="text-xs font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-100">至少選擇1時段</span>
+                            </div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">圖書教具組</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-6">
+                                協助圖書館辦理師生借還書、圖書整理歸位、新書上架以及教學教具領取保管等事宜。
+                            </p>
+                        </div>
+                        <div class="space-y-2 bg-pink-50/30 p-4 rounded-2xl border border-pink-100/70 text-xs text-slate-700">
+                            <div class="font-bold text-slate-800 border-b border-pink-100 pb-1.5">執勤時段 (週一至週五)：</div>
+                            <div class="space-y-1 text-slate-600 pt-1">
+                                <div>• <strong>上午時段：</strong>09:00 - 12:00</div>
+                                <div>• <strong>下午時段：</strong>13:00 - 16:00</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. 環保組 -->
+                    <div class="bg-white rounded-3xl p-6 border border-pink-200/60 shadow-xs flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-500 flex items-center justify-center font-bold border border-emerald-100/80">
+                                    <i data-lucide="recycle" class="w-5 h-5"></i>
+                                </span>
+                                <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">每週二晨</span>
+                            </div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">環保綠美化組</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-6">
+                                協助指導學生資源回收、分類及環保宣導。
+                            </p>
+                        </div>
+                        <div class="space-y-2 bg-pink-50/30 p-4 rounded-2xl border border-pink-100/70 text-xs text-slate-700">
+                            <div class="font-bold text-slate-800 border-b border-pink-100 pb-1.5">執勤時段：</div>
+                            <div class="space-y-1 text-slate-600 pt-1">
+                                <div>• <strong>週三、週五晨間：</strong>07:30 - 08:30</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. 晨光故事組 (第2排左側：佔 1 欄) -->
+                    <div class="bg-white rounded-3xl p-6 border border-pink-200/60 shadow-xs flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="w-10 h-10 rounded-2xl bg-purple-50 text-purple-500 flex items-center justify-center font-bold border border-purple-100/80">
+                                    <i data-lucide="sparkles" class="w-5 h-5"></i>
+                                </span>
+                                <span class="text-xs font-bold text-purple-700 bg-purple-50 px-3 py-1 rounded-full border border-purple-100">跨組服務</span>
+                            </div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">晨光故事組</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-6">
+                                週一晨光時間進入低年級班級進行論語經典故事導讀、故事分享，激發小朋友閱讀興趣與品格發展。
+                            </p>
+                        </div>
+                        <div class="space-y-2 bg-pink-50/30 p-4 rounded-2xl border border-pink-100/70 text-xs text-slate-700">
+                            <div class="font-bold text-slate-800 border-b border-pink-100 pb-1.5">執勤時段：</div>
+                            <div class="space-y-1 text-slate-600 pt-1">
+                                <div>• <strong>週一晨光時間：</strong>07:50 - 08:40</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. 機動活動支援與內部行政組 (第2排右側：在桌機 lg 下跨 2 欄) -->
+                    <div class="bg-white rounded-3xl p-6 border border-pink-200/60 shadow-xs flex flex-col justify-between md:col-span-2 lg:col-span-2">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="w-10 h-10 rounded-2xl bg-pink-50 text-rose-400 flex items-center justify-center font-bold border border-pink-100">
+                                    <i data-lucide="calendar-heart" class="w-5 h-5"></i>
+                                </span>
+                                <span class="text-xs font-bold text-rose-600 bg-pink-50 px-3 py-1 rounded-full border border-pink-100">彈性支援</span>
+                            </div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">機動活動支援與內部行政組</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-6">
+                                包含美工海報製作、大型慶典活動簽到與招待、總務庶務支援、攝影紀錄等，有時間願意協助者彈性電話聯繫通知。
+                            </p>
+                        </div>
+                        <div class="bg-pink-50/30 p-4 rounded-2xl border border-pink-100/70 text-xs text-slate-700">
+                            <strong>合作範疇：</strong>運動會、校慶展覽、兒童節活動、志工研習講座及各式慶生邀請等。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Charter & Reward System -->
+        <section id="charter" class="py-16 bg-pink-50/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-extrabold uppercase tracking-widest text-rose-400 mb-2">Rules & Incentives</h2>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">組織章程重點與獎勵辦法</h3>
+                    <p class="text-slate-500 text-sm mt-2">健全嚴謹的團務規範，保障學童安全與志工無後顧之憂的奉獻環境</p>
+                    <div class="w-16 h-1 bg-pink-300 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-pink-100 shadow-xs flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-3 mb-6">
+                                <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-500 flex items-center justify-center font-bold">
+                                    <i data-lucide="trophy" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-slate-900">臺南市永康區大橋國小志工團獎勵辦法</h4>
+                                    <p class="text-xs text-slate-500">依據志願服務法第十九條第六項規定訂定</p>
+                                </div>
+                            </div>
+
+                            <ul class="space-y-4 text-xs sm:text-sm text-slate-700">
+                                <li class="p-4 bg-pink-50/20 rounded-2xl border border-pink-100/70 flex items-start gap-3">
+                                    <i data-lucide="medal" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <strong class="font-bold text-slate-900">【服務年資榮譽獎牌】</strong>
+                                        <p class="text-slate-600 text-xs mt-1">服務滿十年、十五年、二十年及年滿 65 歲服務滿五年、十年者，學校於公開儀式頒予榮譽獎牌乙面以資鼓勵。</p>
+                                    </div>
+                                </li>
+
+                                <li class="p-4 bg-pink-50/20 rounded-2xl border border-pink-100/70 flex items-start gap-3">
+                                    <i data-lucide="star" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <strong class="font-bold text-slate-900">【志工服務績優獎】</strong>
+                                        <p class="text-slate-600 text-xs mt-1">每學年執勤累計時數達 130 小時以上者，由學校頒予志工服務績優獎狀與獎項。</p>
+                                    </div>
+                                </li>
+
+                                <li class="p-4 bg-pink-50/20 rounded-2xl border border-pink-100/70 flex items-start gap-3">
+                                    <i data-lucide="clock-check" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <strong class="font-bold text-slate-900">【時數累計認證】</strong>
+                                        <p class="text-slate-600 text-xs mt-1">服務時數精確記錄，送輔導處核備，享有志工福利與衛福部志願服務榮譽卡申請資格。</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-pink-100 text-xs text-slate-400">
+                            * 每年七月底前由各組組長或團長填具獎勵事蹟表送輔導處辦理。
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-pink-100 shadow-xs">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-pink-50 text-rose-400 flex items-center justify-center font-bold">
+                                <i data-lucide="file-text" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-slate-900">團員職責與遵守事項摘要</h4>
+                                <p class="text-xs text-slate-500">大橋國小志工輔導團組織章程第五章</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 text-xs sm:text-sm">
+                            <div class="p-3.5 bg-pink-50/20 rounded-xl border border-pink-100/70">
+                                <strong class="font-bold text-rose-500">1. 服勤最低時數：</strong>
+                                <span class="text-slate-600">每週至少服勤二小時或二次。一學期服務時數未達 35 小時，下學期不予續聘。</span>
+                            </div>
+
+                            <div class="p-3.5 bg-pink-50/20 rounded-xl border border-pink-100/70">
+                                <strong class="font-bold text-rose-500">2. 請假規範：</strong>
+                                <span class="text-slate-600">無故缺席 3 次以上視同自動退出。如需請假請自行找人代理，並務必向組長報備。</span>
+                            </div>
+
+                            <div class="p-3.5 bg-pink-50/20 rounded-xl border border-pink-100/70">
+                                <strong class="font-bold text-rose-500">3. 執勤儀容與識別：</strong>
+                                <span class="text-slate-600">執勤時穿著力求整潔樸素（交通組穿背心），並請配帶志工識別證。</span>
+                            </div>
+
+                            <div class="p-3.5 bg-pink-50/20 rounded-xl border border-pink-100/70">
+                                <strong class="font-bold text-rose-500">4. 嚴禁商業營利行為：</strong>
+                                <span class="text-slate-600">團員執勤期間不得從事任何商業營利、金錢借貸或政治活動，違者予以自動退出並 3 年內不得加入。</span>
+                            </div>
+
+                            <div class="p-3.5 bg-pink-50/20 rounded-xl border border-pink-100/70">
+                                <strong class="font-bold text-rose-500">5. 經費與無給職說明：</strong>
+                                <span class="text-slate-600">本團志工為無給職。團務經費由家長委員會撥款、政府補助及捐助，總務股專款專用管理。</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: 報名請洽輔導室 -->
+        <section id="signup" class="py-16 bg-gradient-to-b from-white to-pink-50/40 border-t border-pink-100/70">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white rounded-3xl shadow-xl border border-pink-100 overflow-hidden">
+                    <div class="bg-gradient-to-r from-rose-400 via-pink-400 to-rose-400 p-8 text-white text-center">
+                        <span class="px-3 py-1 bg-amber-300 text-slate-900 font-extrabold text-xs rounded-full uppercase tracking-wider inline-block mb-3">
+                            115 學年度熱烈招募中
+                        </span>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold">大橋國小志工團 報名請洽輔導室</h3>
+                        <p class="text-rose-50 text-xs sm:text-sm mt-2">誠摯歡迎家長與社區熱心人士加入，報名請直接透過電話、傳真或親洽輔導室！</p>
+                    </div>
+
+                    <div class="p-6 sm:p-10 space-y-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- 電話 -->
+                            <div class="bg-pink-50/40 border border-pink-200/60 rounded-3xl p-6 flex flex-col justify-between hover:shadow-md transition">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-pink-400 text-white flex items-center justify-center shrink-0 shadow-md shadow-pink-200">
+                                        <i data-lucide="phone" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs font-bold text-rose-500 uppercase tracking-wider">電話洽詢報名</div>
+                                        <a href="tel:062033001,713" class="text-xl sm:text-2xl font-extrabold text-slate-900 hover:text-rose-500 transition block mt-1">
+                                            (06) 2033001 #713
+                                        </a>
+                                        <p class="text-xs text-slate-500 mt-1">請撥分機 713 輔導室承辦人員</p>
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-4 border-t border-pink-100 flex items-center text-xs text-rose-700 font-medium">
+                                    <i data-lucide="clock" class="w-4 h-4 mr-1.5 text-pink-400"></i>
+                                    <span>服務時間：週一至週五 08:00 - 16:00</span>
+                                </div>
+                            </div>
+
+                            <!-- 傳真 -->
+                            <div class="bg-slate-50 border border-slate-200/80 rounded-3xl p-6 flex flex-col justify-between hover:shadow-md transition">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 rounded-2xl bg-slate-700 text-white flex items-center justify-center shrink-0 shadow-md">
+                                        <i data-lucide="printer" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-xs font-bold text-slate-600 uppercase tracking-wider">傳真報名 / 洽詢</div>
+                                        <div class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">
+                                            (06) 3020057
+                                        </div>
+                                        <p class="text-xs text-slate-500 mt-1">傳真請註明「輔導室 志工團報名」</p>
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-4 border-t border-slate-200 flex items-center text-xs text-slate-600 font-medium">
+                                    <i data-lucide="check-circle" class="w-4 h-4 mr-1.5 text-pink-400"></i>
+                                    <span>24 小時全天候接收傳真</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 bg-pink-50/20 rounded-2xl border border-pink-100/70 space-y-3">
+                            <h4 class="font-bold text-slate-900 text-sm sm:text-base flex items-center gap-2">
+                                <i data-lucide="clipboard-list" class="w-5 h-5 text-pink-400"></i>
+                                <span>報名方式說明</span>
+                            </h4>
+                            <ul class="text-xs sm:text-sm text-slate-600 space-y-2 list-disc pl-5 leading-relaxed">
+                                <li>
+                                    <strong>電話報名：</strong>於學校上班時間致電 <strong>(06) 2033001 轉分機 713</strong>，由輔導室同仁為您登記基本資料及希望服務的組別。
+                                </li>
+                                <li>
+                                    <strong>傳真報名：</strong>載明您的姓名、聯絡手機、身分（家長/社區人士）及希望服務的時段組別，傳真至 <strong>(06) 3020057</strong>。
+                                </li>
+                                <li>
+                                    <strong>現場洽詢：</strong>歡迎直接至本校<strong>輔導處</strong>現場登記或領取志工報名表。
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Activity Gallery (極透亮清晰高解析度版) -->
+        <section id="gallery" class="py-16 bg-white border-t border-pink-100/70">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-extrabold uppercase tracking-widest text-rose-400 mb-2">Activity Highlights</h2>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900">大橋志工溫馨活動花絮</h3>
+                    <p class="text-slate-500 text-sm mt-2">點滴付出，匯聚成孩子學習路上最溫暖堅實的守候</p>
+                    <div class="w-16 h-1 bg-pink-300 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- 照片 1：交通導護 -->
+                    <div class="group relative overflow-hidden rounded-3xl bg-pink-50 aspect-video shadow-md hover:shadow-xl transition duration-300">
+                        <img src="https://lh3.googleusercontent.com/d/1x7jBT49WTzAbisqZ0VzzOaJYmd_NL9Ob=s1600" alt="交通導護" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent p-4 sm:p-5 flex flex-col justify-end">
+                            <span class="text-xs text-amber-300 font-bold drop-shadow-[0_1.5px_2px_rgba(0,0,0,0.8)]">交通導護組</span>
+                            <h4 class="text-base sm:text-lg font-bold text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)]">雨晴無阻 守護上放學安全</h4>
+                        </div>
+                    </div>
+
+                    <!-- 照片 2：圖書導讀 -->
+                    <div class="group relative overflow-hidden rounded-3xl bg-pink-50 aspect-video shadow-md hover:shadow-xl transition duration-300">
+                        <img src="https://lh3.googleusercontent.com/d/1YQDyqR1ycOBgbmFZhEVFL865C5KDX-ss=s1600" alt="圖書導讀" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent p-4 sm:p-5 flex flex-col justify-end">
+                            <span class="text-xs text-pink-300 font-bold drop-shadow-[0_1.5px_2px_rgba(0,0,0,0.8)]">圖書教具組</span>
+                            <h4 class="text-base sm:text-lg font-bold text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)]">整理圖書館 豐富孩子閱讀世界</h4>
+                        </div>
+                    </div>
+
+                    <!-- 照片 3：晨光故事 -->
+                    <div class="group relative overflow-hidden rounded-3xl bg-pink-50 aspect-video shadow-md hover:shadow-xl transition duration-300">
+                        <img src="https://lh3.googleusercontent.com/d/1YQ9h2DHKL4cb5MLy5rAYzRwEgdgxJfwT=s1600" alt="晨光故事" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent p-4 sm:p-5 flex flex-col justify-end">
+                            <span class="text-xs text-pink-300 font-bold drop-shadow-[0_1.5px_2px_rgba(0,0,0,0.8)]">晨光故事組</span>
+                            <h4 class="text-base sm:text-lg font-bold text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)]">週一故事陪伴 帶領想像飛翔</h4>
+                        </div>
+                    </div>
+
+                    <!-- 照片 4：活動支援 -->
+                    <div class="group relative overflow-hidden rounded-3xl bg-pink-50 aspect-video shadow-md hover:shadow-xl transition duration-300">
+                        <img src="https://lh3.googleusercontent.com/d/1uhwnQflqmIyH6p5dfDDsCWX4PHbISbIJ=s1600" alt="活動支援" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent p-4 sm:p-5 flex flex-col justify-end">
+                            <span class="text-xs text-pink-300 font-bold drop-shadow-[0_1.5px_2px_rgba(0,0,0,0.8)]">活動支援</span>
+                            <h4 class="text-base sm:text-lg font-bold text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)]">多元彈性支援 齊心點亮校園</h4>
+                        </div>
+                    </div>
+
+                    <!-- 照片 5：場地布置 -->
+                    <div class="group relative overflow-hidden rounded-3xl bg-pink-50 aspect-video shadow-md hover:shadow-xl transition duration-300">
+                        <img src="https://lh3.googleusercontent.com/d/1EL8vkWuNni_GnLRU86gu713q_LMNOWCs=s1600" alt="場地布置" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent p-4 sm:p-5 flex flex-col justify-end">
+                            <span class="text-xs text-amber-300 font-bold drop-shadow-[0_1.5px_2px_rgba(0,0,0,0.8)]">場地布置</span>
+                            <h4 class="text-base sm:text-lg font-bold text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)]">巧手營造氛圍 打造溫馨舞台</h4>
+                        </div>
+                    </div>
+
+                    <!-- 照片 6：志工認證 -->
+                    <div class="group relative overflow-hidden rounded-3xl bg-pink-50 aspect-video shadow-md hover:shadow-xl transition duration-300">
+                        <img src="https://lh3.googleusercontent.com/d/1y5s3psKB1IFMBS6YwzVObP38osj8E7R7=s1600" alt="志工認證" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent p-4 sm:p-5 flex flex-col justify-end">
+                            <span class="text-xs text-pink-300 font-bold drop-shadow-[0_1.5px_2px_rgba(0,0,0,0.8)]">志工認證</span>
+                            <h4 class="text-base sm:text-lg font-bold text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)]">累積服務足跡 榮耀肯定相伴</h4>
+                        </div>
+                    </div>
+
+                    <!-- 照片 7：環保綠美化 -->
+                    <div class="group relative overflow-hidden rounded-3xl bg-pink-50 aspect-video shadow-md hover:shadow-xl transition duration-300">
+                        <img src="https://lh3.googleusercontent.com/d/1RjtYwIR_AnQmL5IVVHC1VZlDOs1T1T5f=s1600" alt="環保綠美化" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent p-4 sm:p-5 flex flex-col justify-end">
+                            <span class="text-xs text-pink-300 font-bold drop-shadow-[0_1.5px_2px_rgba(0,0,0,0.8)]">環保綠美化</span>
+                            <h4 class="text-base sm:text-lg font-bold text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)]">資源回收分類 紮根永續環境</h4>
+                        </div>
+                    </div>
+
+                    <!-- 照片 8：志工大會與聯誼 -->
+                    <div class="group relative overflow-hidden rounded-3xl bg-pink-50 aspect-video shadow-md hover:shadow-xl transition duration-300">
+                        <img src="https://lh3.googleusercontent.com/d/1UB_PDWa3Q5XrjgB_-zH2t15tF3Zvy5c6=s1600" alt="志工大會與聯誼" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent p-4 sm:p-5 flex flex-col justify-end">
+                            <span class="text-xs text-pink-300 font-bold drop-shadow-[0_1.5px_2px_rgba(0,0,0,0.8)]">團員大會 & 聯誼</span>
+                            <h4 class="text-base sm:text-lg font-bold text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)]">交流分享 齊心協力為大橋</h4>
+                        </div>
+                    </div>
+
+                    <!-- 照片 9：榮譽表揚 -->
+                    <div class="group relative overflow-hidden rounded-3xl bg-pink-50 aspect-video shadow-md hover:shadow-xl transition duration-300">
+                        <img src="https://lh3.googleusercontent.com/d/1700PHJ3hF0dM1U6gAOQvShtFcg5zIgJH=s1600" alt="榮譽表揚" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/65 via-black/25 to-transparent p-4 sm:p-5 flex flex-col justify-end">
+                            <span class="text-xs text-amber-300 font-bold drop-shadow-[0_1.5px_2px_rgba(0,0,0,0.8)]">榮譽表揚</span>
+                            <h4 class="text-base sm:text-lg font-bold text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.9)]">績優志工頒獎 肯定奉獻光彩</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-pink-400 flex items-center justify-center text-white font-bold">
+                            <i data-lucide="heart" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white">大橋國小志工輔導團</h4>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        隸屬於台南市永康區大橋國民小學，由輔導處輔導推動。歡迎社區愛心人士與家長踴躍入團！
+                    </p>
+                </div>
+
+                <div class="space-y-2 text-xs">
+                    <h5 class="font-bold text-white text-sm mb-3">學校與地緣資訊</h5>
+                    <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-pink-300"></i> 台南市永康區大橋三街173號</p>
+                    <p class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-pink-300"></i> 輔導室電話：(06)2033001 #713</p>
+                    <p class="flex items-center gap-2"><i data-lucide="printer" class="w-4 h-4 text-pink-300"></i> 傳真：(06)3020057</p>
+                    <p class="flex items-center gap-2"><i data-lucide="user-check" class="w-4 h-4 text-pink-300"></i> 校長：徐俊雄 校長</p>
+                    <p class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-pink-300"></i> 現任團長：陳○靜 團長</p>
+                </div>
+
+                <div class="space-y-3">
+                    <h5 class="font-bold text-white text-sm">社群與連結</h5>
+                    <a href="https://www.facebook.com/p/%E5%A4%A7%E6%A9%8B%E5%9C%8B%E5%B0%8F%E5%BF%97%E5%B7%A5%E5%9C%98-100057830281866/?locale=zh_TW" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition">
+                        <i data-lucide="facebook" class="w-4 h-4"></i>
+                        <span>追蹤大橋國小志工團 Facebook 粉絲專頁</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-800 text-center text-xs text-slate-500">
+                <p>© 2026 台南市永康區大橋國民小學志工輔導團. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            lucide.createIcons();
+        };
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
     </script>
 </body>
 </html>
